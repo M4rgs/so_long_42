@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/10 03:14:56 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/10 06:23:04 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_strchr(char *s, char c)
 
 static void	check_size(int w, int h, char *line, int fd)
 {
-	if (w > 30 || h > 60)
+	if (w > 75 || h > 50)
 	{
 		while (line)
 		{

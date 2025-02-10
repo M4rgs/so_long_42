@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/09 23:29:45 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/10 06:22:46 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_strchr(char *s, char c)
 
 static void	check_size(int w, int h, char *line, int fd)
 {
-	if (w > 1000 || h > 1000)
+	if (w > 75 || h > 50)
 	{
 		while (line)
 		{
@@ -92,11 +92,9 @@ void	map(t_game *game, char *map_file)
 	char	*line;
 	int		height;
 	int		width;
-	int		temp;
 
 	height = 0;
 	width = 0;
-	temp = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
