@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 04:03:42 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 05:28:47 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,20 @@ static int	ft_strchr(char *s, char c)
 	return (0);
 }
 
-static void	check_w(char *line, int fd)
-{
-	if (!line)
-	{
-		ft_putstr("Invalid Map\nMap size !\n", 2);
-		close(fd);
-		exit(1);
-	}
-}
-
 static void	check_mapsize(int *w, int *h, char *line, int fd)
 {
 	static int	tmp;
 
 	*w = ft_strlen(line);
-	if (ft_strchr(line, '\n'))
+	if (ft_strchr(line, '\n') && line[0] != '\n' )
 		*w -= 1;
-	if ((tmp && *w != tmp) || *h > 55)
+	if ((tmp && *w != tmp) || (*h > 55 || *w + 1 > 78))
 	{
 		ft_putstr("Invalid Map\nMap size !\n", 2);
 		while (line)
 		{
 			free(line);
-			line = line_grabber(fd);
+			line = get_next_line(fd);
 		}
 		close(fd);
 		exit(1);
@@ -74,7 +64,7 @@ static void	map_helper(t_game *game, char *map_file, int height, int width)
 	fd = open(map_file, O_RDONLY);
 	while (i < height)
 	{
-		game->map[i] = line_grabber(fd);
+		game->map[i] = get_next_line(fd);
 		game->map[i][width] = '\0';
 		i++;
 	}
@@ -87,23 +77,24 @@ void	map(t_game *game, char *map_file)
 	char	*line;
 	int		height;
 	int		width;
+	int		temp;
 
 	height = 0;
 	width = 0;
+	temp = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_putstr("Error\ncannot read the map file !\n", 2);
 		exit (1);
 	}
-	line = line_grabber(fd);
-	check_w(line, fd);
+	line = get_next_line(fd);
 	while (line)
 	{
 		check_mapsize(&width, &height, line, fd);
 		height++;
 		free(line);
-		line = line_grabber(fd);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	map_helper(game, map_file, height, width);

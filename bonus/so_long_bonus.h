@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:57:38 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/09 23:55:08 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 05:07:21 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_game
 }	t_game;
 
 void	ft_putstr(char *s, int f);
+char	*get_next_line(int fd);
 int		ft_strlen(char *str);
 void	initialz(t_game *game, char *map_file);
 void	map(t_game *game, char *map_file);

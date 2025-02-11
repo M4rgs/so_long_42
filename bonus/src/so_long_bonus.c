@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:42:31 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 05:06:29 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 05:06:21 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
-void	ft_putchar(char c)
+static int	check_ex(char **s)
 {
-	write (1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (s[1][i])
+		i++;
+	if (s[1][i - 1] != 'r' || s[1][i - 2] != 'e'
+		|| s[1][i - 3] != 'b' || s[1][i - 4] != '.')
+	{
+		return (1);
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_game	game;
-	int		i;
 
-	i = 0;
 	if (ac != 2)
 	{
 		ft_putstr("Error\nWrong parametres, try <", 2);
@@ -30,10 +38,7 @@ int	main(int ac, char **av)
 		ft_putstr(" map.ber>", 2);
 		return (1);
 	}
-	while (av[1][i])
-		i++;
-	if (av[1][i - 1] != 'r' || av[1][i - 2] != 'e'
-		|| av[1][i - 3] != 'b' || av[1][i - 4] != '.')
+	if (check_ex(av))
 	{
 		ft_putstr("Error\nInvalid map extantion '.ber'", 2);
 		return (1);
@@ -42,6 +47,7 @@ int	main(int ac, char **av)
 	mlx_hook(game.window, 2, 1L << 0, handle_input, &game);
 	mlx_hook(game.window, 17, 0, close_game, &game);
 	mlx_loop_hook(game.mlx, render_map, &game);
+	render_walls(&game);
 	mlx_loop(game.mlx);
 	return (0);
 }

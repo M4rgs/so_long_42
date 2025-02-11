@@ -7,9 +7,9 @@ GCC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = Mendatory/so_long.c Mendatory/src/checker.c Mendatory/src/map.c Mendatory/src/render.c Mendatory/src/utils.c Mendatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRC = Mendatory/src/so_long.c Mendatory/src/checker.c Mendatory/src/map.c Mendatory/src/render.c Mendatory/src/utils.c Mendatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
-SRC_BONUS = bonus/so_long_bonus.c bonus/src/checker_bonus.c bonus/src/map_bonus.c bonus/src/render_bonus.c bonus/src/utils_bonus.c bonus/src/init_bonus.c bonus/src/enemy_bonus.c bonus/src/helpme_bonus.c bonus/src/animation.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRC_BONUS = bonus/src/so_long_bonus.c bonus/src/checker_bonus.c bonus/src/map_bonus.c bonus/src/render_bonus.c bonus/src/utils_bonus.c bonus/src/init_bonus.c bonus/src/enemy_bonus.c bonus/src/helpme_bonus.c bonus/src/animation.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 MLX = mlx/libmlx.a
 
@@ -34,8 +34,11 @@ ${NAME_BONUS} : ${OBJ_BONUS}
 	make -C mlx/
 	${GCC} ${CFLAGS} ${OBJ_BONUS} ${MLX} ${MLX_FLAGS} -o ${NAME_BONUS}
 
-%.o : %.c Mendatory/so_long.h bonus/so_long_bonus.h
-	@${CC} ${CFLAGS} -c $< -o $@
+Mendatory/src/%.o : Mendatory/src/%.c Mendatory/so_long.h
+	${CC} ${CFLAGS} -c $< -o $@
+
+bonus/src/%.o : bonus/src/%.c bonus/so_long_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	make clean -C mlx/

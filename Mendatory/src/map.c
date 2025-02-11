@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 04:39:24 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 05:28:51 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static int	ft_strchr(char *s, char c)
 	return (0);
 }
 
-static void	check_mapsize(int *w, int *tmp, char *line, int fd)
+static void	check_mapsize(int *w, int *h, char *line, int fd)
 {
+	static int	tmp;
 
 	*w = ft_strlen(line);
-	if (ft_strchr(line, '\n'))
+	if (ft_strchr(line, '\n') && line[0] != '\n' )
 		*w -= 1;
-	if (*tmp && *w != *tmp)
+	if ((tmp && *w != tmp) || (*h > 55 || *w + 1 > 78))
 	{
 		ft_putstr("Invalid Map\nMap size !\n", 2);
 		while (line)
@@ -43,7 +44,7 @@ static void	check_mapsize(int *w, int *tmp, char *line, int fd)
 		close(fd);
 		exit(1);
 	}
-	*tmp = *w;
+	tmp = *w;
 }
 
 static void	map_helper(t_game *game, char *map_file, int height, int width)
@@ -90,7 +91,7 @@ void	map(t_game *game, char *map_file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		check_mapsize(&width, &temp, line, fd);
+		check_mapsize(&width, &height, line, fd);
 		height++;
 		free(line);
 		line = get_next_line(fd);
