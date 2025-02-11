@@ -24,13 +24,11 @@ RM = rm -rf
 all : ${NAME}
 
 ${NAME} : ${OBJ}
-	make -C mlx/
 	${GCC} ${CFLAGS} ${OBJ} ${MLX} ${MLX_FLAGS} -o ${NAME}
 
 bonus : ${NAME_BONUS}
 
 ${NAME_BONUS} : ${OBJ_BONUS}
-	make -C mlx/
 	${GCC} ${CFLAGS} ${OBJ_BONUS} ${MLX} ${MLX_FLAGS} -o ${NAME_BONUS}
 
 Mendatory/src/%.o : Mendatory/src/%.c Mendatory/so_long.h
@@ -40,14 +38,11 @@ bonus/src/%.o : bonus/src/%.c bonus/so_long_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	make clean -C mlx/
 	${RM} ${OBJ}
 	${RM} ${OBJ_BONUS}
 
 fclean : clean
 	${RM} ${NAME} ${NAME_BONUS}
-	${RM} ${MLX}
-
 re : fclean all
 
 .PHONY : clean
