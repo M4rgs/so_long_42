@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:18:46 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/09 23:54:30 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 04:01:15 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_strdup(char *string)
 char	*line_grabber(int fd)
 {
 	char	c;
-	char	tmp[7000000];
+	char	tmp[80];
 	int		readed;
 	int		i;
 	char	*line;
@@ -56,6 +56,8 @@ char	*line_grabber(int fd)
 	readed = read(fd, &c, 1);
 	while (readed > 0)
 	{
+		if (i > 78)
+			return (NULL);
 		tmp[i++] = c;
 		if (c == '\n')
 			break ;

@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/10 06:22:46 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 03:59:39 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,24 @@ static int	ft_strchr(char *s, char c)
 	return (0);
 }
 
-static void	check_size(int w, int h, char *line, int fd)
+static void	check_w(char *line, int fd)
 {
-	if (w > 75 || h > 50)
+	if (!line)
 	{
-		while (line)
-		{
-			free(line);
-			line = line_grabber(fd);
-		}
-		ft_putstr("Error\nMap too big !", 2);
+		ft_putstr("Invalid Map\nMap size !\n", 2);
+		close(fd);
 		exit(1);
 	}
 }
 
-static void	check_widht(int *w, int *h, char *line, int fd)
+static void	check_mapsize(int *w, int *h, char *line, int fd)
 {
 	static int	tmp;
 
 	*w = ft_strlen(line);
 	if (ft_strchr(line, '\n'))
 		*w -= 1;
-	if (tmp && *w != tmp)
+	if ((tmp && *w != tmp) || *h > 55)
 	{
 		ft_putstr("Invalid Map\nMap size !\n", 2);
 		while (line)
@@ -59,7 +55,6 @@ static void	check_widht(int *w, int *h, char *line, int fd)
 		exit(1);
 	}
 	tmp = *w;
-	check_size(*w, *h, line, fd);
 }
 
 static void	map_helper(t_game *game, char *map_file, int height, int width)
@@ -102,9 +97,10 @@ void	map(t_game *game, char *map_file)
 		exit (1);
 	}
 	line = line_grabber(fd);
+	check_w(line, fd);
 	while (line)
 	{
-		check_widht(&width, &height, line, fd);
+		check_mapsize(&width, &height, line, fd);
 		height++;
 		free(line);
 		line = line_grabber(fd);
