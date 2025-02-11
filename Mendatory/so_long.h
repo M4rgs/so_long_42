@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 07:42:19 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 03:14:21 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/11 04:34:48 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_game
 }	t_game;
 
 void	ft_putstr(char *s, int f);
-int		ft_strlen(char *str);
 void	initialz(t_game *game, char *map_file);
+size_t	ft_strlen(char *s);
 void	map(t_game *game, char *map_file);
 void	check_map(t_game *game, char *map_file);
 void	free_map(t_game *game, int flag, char *map_file);
@@ -63,5 +63,6 @@ void	ft_putnbr(int nb);
 void	print_moves(t_game *game, int moves);
 char	*line_grabber(int fd);
 void	ft_putchar(char c);
+char	*get_next_line(int fd);
 
 #endif  

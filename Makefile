@@ -4,11 +4,12 @@ NAME_BONUS = so_long_bonus
 
 GCC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
-SRC = Mendatory/so_long.c Mendatory/src/checker.c Mendatory/src/map.c Mendatory/src/render.c Mendatory/src/utils.c Mendatory/src/init.c Mendatory/src/linegrab.c
+CFLAGS = -Wall -Wextra -Werror
 
-SRC_BONUS = bonus/so_long_bonus.c bonus/src/checker_bonus.c bonus/src/map_bonus.c bonus/src/render_bonus.c bonus/src/utils_bonus.c bonus/src/init_bonus.c bonus/src/enemy_bonus.c bonus/src/helpme_bonus.c bonus/src/animation.c bonus/src/linegrab.c
+SRC = Mendatory/so_long.c Mendatory/src/checker.c Mendatory/src/map.c Mendatory/src/render.c Mendatory/src/utils.c Mendatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+
+SRC_BONUS = bonus/so_long_bonus.c bonus/src/checker_bonus.c bonus/src/map_bonus.c bonus/src/render_bonus.c bonus/src/utils_bonus.c bonus/src/init_bonus.c bonus/src/enemy_bonus.c bonus/src/helpme_bonus.c bonus/src/animation.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 MLX = mlx/libmlx.a
 
