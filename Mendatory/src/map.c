@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 05:58:57 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/12 01:57:24 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	check_mapsize(int *w, int *h, char *line, int fd)
 	static int	tmp;
 
 	*w = ft_strlen(line);
-	if (ft_strchr(line, '\n') && line[0] != '\n')
+	if (ft_strchr(line, '\n'))
 		*w -= 1;
 	if ((tmp && *w != tmp) || (*h > 55 || *w + 1 > 78))
 	{
@@ -77,11 +77,9 @@ void	map(t_game *game, char *map_file)
 	char	*line;
 	int		height;
 	int		width;
-	int		temp;
 
 	height = 0;
 	width = 0;
-	temp = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd < 0)
 	{
