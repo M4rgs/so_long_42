@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 07:42:19 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/11 05:07:09 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/15 22:09:46 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	free_resources(t_game *game);
 int		render_map(t_game *game);
 void	ft_putnbr(int nb);
 void	print_moves(t_game *game, int moves);
-char	*line_grabber(int fd);
 void	ft_putchar(char c);
 char	*get_next_line(int fd);
 
