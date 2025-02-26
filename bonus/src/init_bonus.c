@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:21:47 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/09 21:50:10 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/26 00:48:23 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	shapes(t_game *game)
 	game->anicollect.img = mlx_xpm_file_to_image(game->mlx,
 			"textures/collect.xpm", &game->anicollect.width,
 			&game->anicollect.height);
-	shapes2(game);
 	if (!game->wall.img || !game->floor.img
 		|| !game->player.img || !game->exit.img || !game->anicollect.img)
 	{
@@ -54,6 +53,7 @@ static void	shapes(t_game *game)
 		free_resources(game);
 		exit(1);
 	}
+	shapes2(game);
 }
 
 static void	init_game_help(t_game *game)

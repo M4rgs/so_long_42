@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:03:26 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/10 00:44:35 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/25 23:04:35 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ void	check_map(t_game *game, char *map_file)
 	}
 	if (!check_require(game))
 	{
-		ft_putstr("Error\nInvalid components !\n", 2);
+		ft_putstr("Error\nComponents must be one player,\
+			One exit, Atleat one collectable !\n", 2);
 		free_map(game, -1, map_file);
 	}
 	if (!check_valid_map(game, map_file))

@@ -4,9 +4,9 @@ NAME_BONUS = so_long_bonus
 
 GCC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
-SRC = Mendatory/src/so_long.c Mendatory/src/checker.c Mendatory/src/map.c Mendatory/src/render.c Mendatory/src/utils.c Mendatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRC = mandatory/src/so_long.c mandatory/src/checker.c mandatory/src/map.c mandatory/src/render.c mandatory/src/utils.c mandatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 SRC_BONUS = bonus/src/so_long_bonus.c bonus/src/checker_bonus.c bonus/src/map_bonus.c bonus/src/render_bonus.c bonus/src/utils_bonus.c bonus/src/init_bonus.c bonus/src/enemy_bonus.c bonus/src/helpme_bonus.c bonus/src/animation_bonus.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
@@ -31,7 +31,7 @@ bonus : ${NAME_BONUS}
 ${NAME_BONUS} : ${OBJ_BONUS}
 	${GCC} ${CFLAGS} ${OBJ_BONUS} ${MLX} ${MLX_FLAGS} -o ${NAME_BONUS}
 
-Mendatory/src/%.o : Mendatory/src/%.c Mendatory/so_long.h
+mandatory/src/%.o : mandatory/src/%.c mandatory/so_long.h
 	${CC} ${CFLAGS} -c $< -o $@
 
 bonus/src/%.o : bonus/src/%.c bonus/so_long_bonus.h
@@ -43,6 +43,7 @@ clean :
 
 fclean : clean
 	${RM} ${NAME} ${NAME_BONUS}
+
 re : fclean all
 
 .PHONY : clean

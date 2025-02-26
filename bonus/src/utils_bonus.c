@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:06:39 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/09 22:15:23 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/26 00:50:01 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	move_player(t_game *game, int new_x, int new_y)
 	{
 		if (game->map[new_y][new_x] == 'N')
 		{
-			ft_putstr("You Died\n", 1);
+			ft_putstr("You Died LOL\n", 1);
 			close_game(game);
 		}
 		if (game->map[new_y][new_x] == 'E' && game->collectables != 0)
