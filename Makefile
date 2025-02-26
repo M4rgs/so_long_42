@@ -4,7 +4,7 @@ NAME_BONUS = so_long_bonus
 
 GCC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = mandatory/src/so_long.c mandatory/src/checker.c mandatory/src/map.c mandatory/src/render.c mandatory/src/utils.c mandatory/src/init.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
