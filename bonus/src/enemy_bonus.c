@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 20:09:44 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/07 16:13:21 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/27 04:17:21 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	moveemyhelp(int *enemy_x, int *enemy_y, int *new_x, int *new_y)
 	int	random_dir;
 	int	directions[4][2];
 
+	srand(time(NULL));
 	directions[0][0] = 0;
 	directions[0][1] = -1;
 	directions[1][0] = 0;
@@ -49,7 +50,7 @@ static void	moveenemy(t_game *game, int enemy_x, int enemy_y)
 			return ;
 		if (game->map[new_y][new_x] == 'P')
 		{
-			ft_putstr("You Died\n", 1);
+			ft_putstr("You Died LOL\n", 1);
 			close_game(game);
 		}
 	}
