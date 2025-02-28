@@ -31,10 +31,10 @@ bonus : ${NAME_BONUS}
 ${NAME_BONUS} : ${OBJ_BONUS}
 	${GCC} ${CFLAGS} ${OBJ_BONUS} ${MLX} ${MLX_FLAGS} -o ${NAME_BONUS}
 
-mandatory/src/%.o : mandatory/src/%.c mandatory/so_long.h
+mandatory/src/%.o : mandatory/src/%.c mandatory/so_long.h get_next_line/get_next_line.h
 	${CC} ${CFLAGS} -c $< -o $@
 
-bonus/src/%.o : bonus/src/%.c bonus/so_long_bonus.h
+bonus/src/%.o : bonus/src/%.c bonus/so_long_bonus.h get_next_line/get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :

@@ -6,7 +6,7 @@
 /*   By: tamounir <tamounir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:12:51 by tamounir          #+#    #+#             */
-/*   Updated: 2025/02/26 00:45:57 by tamounir         ###   ########.fr       */
+/*   Updated: 2025/02/28 03:20:35 by tamounir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	check_mapsize(int *w, int *h, char *line, int fd)
 	static int	tmp;
 
 	*w = ft_strlen(line);
-	if (ft_strchr(line, '\n'))
+	if (ft_strchr(line, '\n') && line[0] != '\n')
 		*w -= 1;
 	if ((tmp && *w != tmp) || (*h > 55 || *w > 79))
 	{
